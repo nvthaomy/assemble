@@ -1,0 +1,13 @@
+c cis-PI-monomer.pdb cis-PI-monomer.txt
+t trans-PI-monomer.pdb trans-PI-monomer.txt
+
+C cis-PBD-monomer.pdb cis-PBD-monomer.txt
+T trans-PBD-monomer.pdb trans-PBD-monomer.txt
+
+V vinyl-PBD-monomer.pdb vinyl-PBD-monomer.txt
+
+S Styrene.pdb Styrene.txt
+e diethylene.pdb diethylene.txt
+
+H hPI-monomer.pdb hPI-monomer.txt
+r rev-hPI-monomer.pdb rev-hPI-monomer.txt
