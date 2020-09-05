@@ -1,0 +1,10 @@
+mode pdb
+database  ./database.txt
+output_folder .
+system_name PS
+box_grid_shape 5 5 5
+chain PS1 111
+concentration PS1 50
+chain PS2 212
+concentration PS2 50
+molecule PS1 PS2

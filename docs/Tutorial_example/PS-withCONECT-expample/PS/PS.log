@@ -1,0 +1,18 @@
+>                 Assemble v1.0                     <
+> (c) 2014, Matteo Degiacomi and Valentina Erastova <
+
+> Preparing molecules database...
+>> loading PDB /Users/nvthaomy/Desktop/UCSB_Research/assemble/docs/Tutorial_example/PS-withCONECT-expample/styrene1.pdb
+>> loading PDB /Users/nvthaomy/Desktop/UCSB_Research/assemble/docs/Tutorial_example/PS-withCONECT-expample/styrene2.pdb
+
+> generating polymer PS1...
+>> sequence: 111
+>> writing PDB file PS1.pdb
+>> Detected connectivity in monomer PDB files, writing out connectivity to PDB<<
+
+> generating polymer PS2...
+>> sequence: 212
+>> writing PDB file PS2.pdb
+>> Detected connectivity in monomer PDB files, writing out connectivity to PDB<<
+
+> All done! Thank you for using Assemble! <
