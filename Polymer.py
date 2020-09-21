@@ -422,20 +422,22 @@ class Polymer(object):
             # write connectivity for this residue
             if WriteConnect:
                 connect = self.poly[0].connect                               
-            for k in range(0,len(connect)):
-                c_tmp = connect[k].split()[1:]
-                if int(c_tmp[0]) != head_hook and int(c_tmp[0]) != tail_hook: # skip if first atom is hook
-                    C += 'CONECT'
-                    for l in range(len(c_tmp)):                   
-                        if int(c_tmp[l]) != head_hook and int(c_tmp[l]) != tail_hook:
-                            C += '%5i' %(int(c_tmp[l])+indx_shift)
-                        if l == 0 and int(c_tmp[l]) == head and j != 0: # if head atom of middle monomer, connect to previous tail. 
-                            C += '%5i' %(int(prev_tail_indx))
-                        elif l == 0 and int(c_tmp[l]) == tail and j != len(self.poly) -1: # if tail atom of middle monomer, connect to next head. 
-                            C += '%5i' %(int(next_head_indx))
-                    C += '\n'
-            prev_tail_indx = tail_indx 
-        f_out.write(C)         
+                for k in range(0,len(connect)):
+                    c_tmp = connect[k].split()[1:]
+                    if int(c_tmp[0]) != head_hook and int(c_tmp[0]) != tail_hook: # skip if first atom is hook
+                        C += 'CONECT'
+                        for l in range(len(c_tmp)):                   
+                            if int(c_tmp[l]) != head_hook and int(c_tmp[l]) != tail_hook:
+                                C += '%5i' %(int(c_tmp[l])+indx_shift)
+                            if l == 0 and int(c_tmp[l]) == head and j != 0: # if head atom of middle monomer, connect to previous tail. 
+                                C += '%5i' %(int(prev_tail_indx))
+                            elif l == 0 and int(c_tmp[l]) == tail and j != len(self.poly) -1: # if tail atom of middle monomer, connect to next head. 
+                                C += '%5i' %(int(next_head_indx))
+                        C += '\n'
+                prev_tail_indx = tail_indx 
+
+        if WriteConnect:
+            f_out.write(C)         
         f_out.close()
 
 
