@@ -389,12 +389,11 @@ class Polymer(object):
         index=1 
         for j in range(0,len(self.poly),1):
             data_list=self.poly[j].mapping(self.poly[j].data)
-            
+            head = int(self.poly[j].limit['head']) # MN
+            tail = int(self.poly[j].limit['tail']) # MN 
             if typef=="pdb":
                 tail_hook=int(self.poly[j].limit['tail_hook'])
                 head_hook=int(self.poly[j].limit['head_hook'])
-                head = int(self.poly[j].limit['head']) # MN
-                tail = int(self.poly[j].limit['tail']) # MN
                 if j < len(self.poly)-1:
                     next_head = int(self.poly[j+1].limit['head']) # MN
                     next_head_indx = next_head + index - 1 + len(self.poly[j].atom.keys()) - 2 # skip hooks 
@@ -403,11 +402,16 @@ class Polymer(object):
             else:
                 tail_hook=""
                 head_hook=""
+                if j < len(self.poly)-1:
+                    next_head = int(self.poly[j+1].limit['head']) # MN
+                    next_head_indx = next_head + index - 1 + len(self.poly[j].atom.keys()) 
+                else:
+                    next_head = None
             
             for i in range(0,len(data_list),1):
                 #create and write PDB line of non pseudoatoms                
                 if data_list[i][0]!=head_hook and data_list[i][0]!=tail_hook:        
-                #if True:       
+                #if True:
                     if  data_list[i][0] == head:
                         head_indx = index
                     elif data_list[i][0] == tail:
