@@ -36,6 +36,7 @@ class Molecule:
         self.res={}
         self.chain={}
         self.atomtype={}
+        self.element={}
         
         #structure(whole pdb in numeric format, via hashtable)
         self.data=[]
@@ -101,7 +102,7 @@ class Molecule:
                 if not ch in self.chain:
                     self.chain[ch]=len(self.chain.values())+1
                 w.append(self.chain[ch])
-
+                                
                 w.append(int(line[22:26]))	
                 w.append(float(line[30:38]))
                 w.append(float(line[38:46]))
@@ -121,11 +122,17 @@ class Molecule:
                 except:
                     w.append(self.chain[ch])
 
+                el=line[76:78].strip() 
+                if not el in self.element:
+                    self.element[el]=len(self.element.values())+1
+                w.append(self.element[el])
+
                 data_in.append(w)
                                
             # connectivity
             elif record == 'CONECT':
                 self.connect.append(line)
+
         self.data=np.array(data_in).astype(float)
         
         if self.data.shape[0]<3:
@@ -257,9 +264,10 @@ class Molecule:
             res=[k for k, v in self.res.items() if v == data[i,2]][0]
             chain=[k for k, v in self.chain.items() if v == data[i,3]][0]
             #atomtype=[k for k, v in self.atomtype.items() if v == data[i,10]][0]
-            atomtype=""
-             
-            l=(int(self.data[i,0]),atom,res,chain,int(self.data[i,4]),self.data[i,5],self.data[i,6],self.data[i,7],self.data[i,8],self.data[i,9],atomtype)
+            #atomtype=""
+            element=[k for k, v in self.element.items() if v == data[i,11]][0]
+            
+            l=(int(self.data[i,0]),atom,res,chain,int(self.data[i,4]),self.data[i,5],self.data[i,6],self.data[i,7],self.data[i,8],self.data[i,9],element)
             data_list.append(l)
     
         return data_list
