@@ -153,7 +153,7 @@ class Parser:
 	
 				p=[]
 				cnt=0
-				for x in range(0,len(self.percentage[m])/2,1):
+				for x in range(0,int(len(self.percentage[m])/2.),1):
 					try:
 						p_f=float(self.percentage[m][x*2+1])
 					except ValueError:
