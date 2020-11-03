@@ -425,7 +425,7 @@ class Polymer(object):
             
             # write connectivity for this residue
             if WriteConnect:
-                connect = self.poly[0].connect                               
+                connect = self.poly[j].connect                               
                 for k in range(0,len(connect)):
                     c_tmp = connect[k].split()[1:]
                     if int(c_tmp[0]) != head_hook and int(c_tmp[0]) != tail_hook: # skip if first atom is hook
